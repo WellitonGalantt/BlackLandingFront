@@ -1,7 +1,5 @@
 import { useState } from "react";
 import type { FormEvent, ChangeEvent } from "react";
-import dotenv from "dotenv";
-dotenv.config();
 
 type Errors = Partial<Record<"name" | "email" | "phone", string>>;
 
