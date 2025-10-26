@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+html {
+    scroll-behavior: smooth;
+  }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+@theme {
+    --color-white-primary: #EEE9E6;
+    --color-black-primary: #0F0F0F;
+    --color-black-blue: #0F112A;
+    --color-blue-primary: #0048A3;
+    --color-yellow-promo: #E5B44A;
+  
+    --color-purple-gradiente: #310E4E;
+    --color-purple-gradiente-2: #1B43E3;
+    --color-purple-gradiente-3: #180D7C;
+  
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    /* Duração ajustável */
+    --animate-marquee: marquee 15s linear infinite;
+
+    /* opcional: acelera a renderização */
+    --tw-will-change-transform: will-change: transform;
+}
+  
+
+@layer utilities {
+    .border-font {
+        color: #0F0F0F;
+        -webkit-text-stroke: 10px transparent;
+        -webkit-background-clip: text;
+    }
+}
