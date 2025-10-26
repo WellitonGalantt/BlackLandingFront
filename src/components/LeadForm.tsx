@@ -75,6 +75,7 @@ function validate(raw: Record<string, FormDataEntryValue>) {
 
 export default function LeadForm() {
   const [sent, setSent] = useState(false);
+  const [sentMessage, setSentMessage] = useState("");
   const [errors, setErrors] = useState<Errors>({});
   const [phoneView, setPhoneView] = useState(""); // controle de máscara em tempo real
 
@@ -116,8 +117,15 @@ export default function LeadForm() {
     });
 
     const json = await res.json();
-    console.log("Lead (enviado):", json);
+    if (!json.success) {
+      setSentMessage(json.message);
+      setSent(true);
+      return;
+    }
 
+    setSentMessage(
+      "🎉 Inscrição recebida! Em breve você recebe nossas ofertas."
+    );
     setSent(true);
     setTimeout(() => setSent(false), 5000);
     e.currentTarget.reset();
