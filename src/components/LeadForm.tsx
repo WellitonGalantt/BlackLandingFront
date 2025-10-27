@@ -104,8 +104,6 @@ export default function LeadForm() {
       return;
     }
 
-    console.log("Lead (normalizado):", values);
-
     // env nao funciona pois precisa do node e o front roda no navegador
     const url_api = import.meta.env.VITE_API_URL ?? "";
 
@@ -117,9 +115,11 @@ export default function LeadForm() {
     });
 
     const json = await res.json();
+
     if (!json.success) {
       setSentMessage(json.message);
       setSent(true);
+      setTimeout(() => setSent(false), 6000);
       return;
     }
 
@@ -219,7 +219,7 @@ export default function LeadForm() {
 
           {sent ? (
             <p className="mt-4 text-center text-sm text-emerald-200">
-              🎉 Inscrição recebida! Em breve você recebe nossas ofertas.
+              {sentMessage}
             </p>
           ) : (
             <ul className="mt-4 flex flex-wrap items-center justify-center gap-x-6 gap-y-1 text-xs text-white/85">
