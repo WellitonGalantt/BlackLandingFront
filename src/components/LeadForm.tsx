@@ -108,6 +108,9 @@ export default function LeadForm() {
     const url_api = import.meta.env.VITE_API_URL ?? "";
 
     // Exemplo de envio (descomente e adapte)
+    console.log("URL FRONT END:", import.meta.env.VITE_API_URL);
+    console.log("URL FRONT END:", url_api);
+
     const res = await fetch(url_api, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -115,6 +118,7 @@ export default function LeadForm() {
     });
 
     const json = await res.json();
+    console.log("Result Fetch Front", json);
 
     if (!json.success) {
       setSentMessage(json.message);
